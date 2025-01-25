@@ -1,3 +1,5 @@
+pub mod schema;
+
 use nom::{
     bytes::complete::take_till, character::complete::line_ending, multi::separated_list0, IResult,
 };
@@ -89,11 +91,7 @@ fn parse_line(input: &str) -> IResult<&str, ParsedLine> {
     Ok((remaining, parsed))
 }
 
-/// Parse the entire input as multiple lines, ignoring empty or comment lines,
-/// returning a vector of (key, value) for the Setting lines.
 fn parse_config_lines(input: &str) -> IResult<&str, Vec<(String, String)>> {
-    // We'll separate the input by line endings, parse each line,
-    // and collect the Setting lines.
     let (remaining, lines) = separated_list0(
         // we separate by line_ending
         line_ending,
