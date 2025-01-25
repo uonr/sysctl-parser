@@ -98,7 +98,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "sysctl-parser"
+name = "sysctl_parser"
 version = "0.1.0"
 dependencies = [
  "nom",
